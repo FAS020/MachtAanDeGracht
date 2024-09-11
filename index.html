@@ -12,20 +12,23 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            min-height: 100vh; /* Zorgt ervoor dat de body de volledige hoogte van het scherm heeft */
             margin: 0;
             padding: 20px;
             overflow: hidden; /* Verbergt de scrollbar en voorkomt scrollen */
-            background-image: url(achtergrond.png); /* Voeg je afbeelding hier in */
+            background-image: url('achtergrond.png'); /* Voeg je afbeelding hier in */
             background-size: cover; /* Zorgt ervoor dat de afbeelding het scherm vult */
             background-position: center; /* Centreert de afbeelding */
             background-repeat: no-repeat; /* Voorkomt herhaling van de afbeelding */
         }
+        
         .wallet {
             font-size: 2em;
             margin-bottom: 20px;
             background: rgba(255, 255, 255, 0.8); /* Een lichte achtergrond voor leesbaarheid */
             padding: 10px;
         }
+        
         input {
             width: 200px;
             font-size: 1.5em;
@@ -33,10 +36,12 @@
             text-align: center;
             margin-bottom: 20px;
         }
+        
         .buttons {
             display: flex;
             gap: 10px;
         }
+        
         button {
             font-size: 1.2em;
             padding: 10px 20px;
@@ -45,14 +50,22 @@
             color: rgb(0, 0, 0);
             border: none;
             border: solid 1px #fff;
-
         }
-
+        
         button:hover {
             border: solid 1px #000;
         }
+        
         button.pay {
             background-color: #ffffff;
+        }
+
+        /* Media query voor kleinere schermen */
+        @media (max-width: 768px) {
+            body {
+                background-size: contain; /* Zorgt ervoor dat de hele afbeelding zichtbaar is */
+                background-position: top; /* Centreert de afbeelding vanaf de bovenkant */
+            }
         }
     </style>
 </head>
