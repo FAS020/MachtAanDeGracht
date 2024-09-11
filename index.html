@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macht Aan De Gracht</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden; /* Verbergt de scrollbar en voorkomt scrollen */
+            background-image: url(achtergrond.png); /* Voeg je afbeelding hier in */
+            background-size: cover; /* Zorgt ervoor dat de afbeelding het scherm vult */
+            background-position: center; /* Centreert de afbeelding */
+            background-repeat: no-repeat; /* Voorkomt herhaling van de afbeelding */
+        }
+        .wallet {
+            font-size: 2em;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.8); /* Een lichte achtergrond voor leesbaarheid */
+            padding: 10px;
+        }
+        input {
+            width: 200px;
+            font-size: 1.5em;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border: solid 1px #fff;
+
+        }
+
+        button:hover {
+            border: solid 1px #000;
+        }
+        button.pay {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wallet">€<span id="balance">100.000</span></div>
+    <input type="text" id="amountInput">
+    <div class="buttons">
+        <button class="pay" onclick="updateBalance('pay')">Betaal</button>
+        <button onclick="updateBalance('receive')">Ontvang</button>
+    </div>
+
+    <script>
+        let balance = 100000;
+
+        function formatNumber(value) {
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        function formatInput(value) {
+            return parseInt(value.replace(/[,.]/g, ''));
+        }
+
+        function updateBalance(action) {
+            const amountInput = document.getElementById('amountInput').value;
+            const amount = formatInput(amountInput);
+
+            if (isNaN(amount)) {
+                alert('Voer een geldig bedrag in!');
+                return;
+            }
+
+            if (action === 'pay' && amount > balance) {
+                alert('Niet genoeg saldo!');
+                return;
+            }
+
+            balance = action === 'pay' ? balance - amount : balance + amount;
+
+            if (balance <= 0) {
+                alert('Je bent Rut!');
+                balance = 0;
+            }
+
+            document.getElementById('balance').innerText = formatNumber(balance);
+        }
+
+        document.getElementById('balance').innerText = formatNumber(balance);
+    </script>
+
+</body>
+</html>
