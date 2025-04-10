@@ -71,7 +71,7 @@
 </head>
 <body>
 
-    <div class="wallet">€<span id="balance">100.000</span></div>
+    <div class="wallet">€<span id="balance">5.000</span></div>
     <input type="text" id="amountInput">
     <div class="buttons">
         <button class="pay" onclick="updateBalance('pay')">Betaal</button>
@@ -79,7 +79,7 @@
     </div>
 
     <script>
-        let balance = 100000;
+        let balance = 5000;
 
         function formatNumber(value) {
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
