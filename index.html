@@ -23,6 +23,14 @@
             background-repeat: no-repeat; /* Voorkomt herhaling van de afbeelding */
         }
         
+        .logo {
+            width: 80%; /* Het logo schaalt naar 20% van de breedte van het scherm */
+            max-width: 400px; /* Zorgt ervoor dat het logo niet te groot wordt */
+            height: auto; /* Behoudt de aspect ratio van het logo */
+            margin-bottom: 60px; /* Voeg een beetje ruimte onder het logo toe */
+        }
+
+
         .wallet {
             font-size: 2em;
             margin-bottom: 20px;
@@ -71,6 +79,10 @@
     </style>
 </head>
 <body>
+
+    <img class="logo"
+     src="Logo.jpg"
+     alt="logo">
 
     <div class="wallet">€<span id="balance">5.000</span></div>
     <input type="text" id="amountInput">
